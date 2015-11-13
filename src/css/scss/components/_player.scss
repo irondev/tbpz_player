@@ -47,6 +47,32 @@
         &:hover {
             color:$color-red;
         }
+
+        &--load {
+            animation:rotate360 1s infinite linear;
+
+            &:hover {
+                color:#FFF;
+                cursor:default;
+            }
+        }
+
+        &--pause {
+            animation:blink 2s infinite linear;
+        }
+
+        .player:not(.is-loading) &--load {
+            display:none;
+        }
+
+        .player.is-loading &--play,
+        .player.is-playing &--play {
+            display:none;
+        }
+
+        .player:not(.is-playing) &--pause {
+            display:none;
+        }
     }
 
     &__button {

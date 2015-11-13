@@ -18,19 +18,22 @@ var onYouTubeIframeAPIReady = function () {
                     case YT.PlayerState.PLAYING:
                         isPlayerLoading = false;
                         isPlayerPlaying = true;
-                        isPlayerPausing = false;
+                        isPlayerPaused = false;
                         setProgressBar();
+                        setClass("is-playing");
                     break;
                     case YT.PlayerState.PAUSED:
                         isPlayerLoading = false;
                         isPlayerPlaying = false;
-                        isPlayerPausing = true;
+                        isPlayerPaused = true;
+                        setClass("is-paused");
                     break;
                     case YT.PlayerState.ENDED:
                         isPlayerLoading = false;
                         isPlayerPlaying = false;
-                        isPlayerPausing = false;
+                        isPlayerPaused = false;
                         unsetProgressBar();
+                        setClass("is-ended");
                     break;
                 }
             }
@@ -68,6 +71,7 @@ var playerGetCurrentTime = function () {
 };
 
 var playerPlay = function () {
+    setClass("is-loading");
     player.playVideo();
 };
 

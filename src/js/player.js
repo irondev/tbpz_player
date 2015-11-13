@@ -1,11 +1,12 @@
 var playerTimer,
+	$progressBar = jQuery('.js-playerProgress'),
+	$player = jQuery(".js-player"),
     isPlayerReady = false,
     isPlayerLoading = false,
     isPlayerPlaying = false,
     isPlayerPausing = false;
 
 var setProgressBar = function () {
-	var $progressBar = jQuery('.js-playerProgress');
 	clearInterval(playerTimer);
 	playerTimer = setInterval(function() {
 		var duration = playerGetDuration();
@@ -18,6 +19,7 @@ var setProgressBar = function () {
 var unsetProgressBar = function () {
 	clearInterval(playerTimer);
 	playerProgression = 0;
+	$progressBar.css({ width: playerProgression + '%' });
 };
 
 var seek = function (e) {
@@ -28,6 +30,11 @@ var seek = function (e) {
 	var clicRelativePosition = clicPosition - elementPosition;
 	var percentage = Math.round(clicRelativePosition * 100 / elementSize);
 	playerSeekTo(percentage);
+};
+
+var setClass = function (status) {
+	$player.removeClass("is-loading is-playing is-paused is-ended");
+	$player.addClass(status);
 };
 
 var getUrlParam = function (sParam) {

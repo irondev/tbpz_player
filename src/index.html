@@ -13,12 +13,13 @@
     </head>
     <body>
 
-        <section class="player">
+        <section class="player js-player">
             <div id="player"></div>
             <div class="player__wrapper">
                 <div class="player__controls">
-                    <a href class="player__control fa fa-play js-playerPlay" onclick="playerPlay(); ga('send', 'event', 'play', 'click', 'player buttons'); return false;"></a>
-                    <a href class="player__control fa fa-pause js-playerPause" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></a>
+                    <a href class="player__control player__control--play fa fa-play" onclick="playerPlay(); ga('send', 'event', 'play', 'click', 'player buttons'); return false;"></a>
+                    <a href class="player__control player__control--pause fa fa-pause" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></a>
+                    <span class="player__control player__control--load fa fa-circle-o-notch" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></span>
                     <div class="progressbar" onclick="seek(event); ga('send', 'event', 'seek', 'click', 'player buttons'); return false;">
                         <div class="progressbar__complete js-playerProgress"></div>
                     </div>

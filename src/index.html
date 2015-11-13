@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
+        <!-- build:template
+        <link href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" rel="stylesheet" type="text/css">
+        <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="<%=assetsPath%>css/ie.css" />
+        <![endif]-->
+        /build -->
+    </head>
+    <body>
+
+        <section class="player">
+            <div id="player"></div>
+            <div class="player__wrapper">
+                <div class="player__controls">
+                    <a href class="player__control fa fa-play js-playerPlay" onclick="playerPlay(); ga('send', 'event', 'play', 'click', 'player buttons'); return false;"></a>
+                    <a href class="player__control fa fa-pause js-playerPause" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></a>
+                    <div class="progressbar" onclick="seek(event); ga('send', 'event', 'seek', 'click', 'player buttons'); return false;">
+                        <div class="progressbar__complete js-playerProgress"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- build:template
+        <script src="<%=assetsPath%>js/vendors.min.js"></script>
+        <script src="<%=assetsPath%>js/player.js?<%=timestamp%>"></script>
+        <script src="<%=assetsPath%>js/ext.js?<%=timestamp%>"></script>
+        /build -->
+    </body>
+</html>

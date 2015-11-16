@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     var env = grunt.option('env') || "dev";
 
-    var assetsPath = (env == 'dev') ? './' : '/special/rewind/';
+    var assetsPath = (env == 'dev') ? './' : '/player/';
 
     console.log(" ");
 

@@ -58,7 +58,7 @@ var getUrlParam = function (sParam) {
 
 var sourceUrl = getUrlParam('url');
 if (sourceUrl.indexOf("youtube.com") != -1) {
-	jQuery.getScript("/js/api/youtube-v3.js", function( data, textStatus, jqxhr ) {
+	jQuery.getScript("./js/api/youtube-v3.js", function( data, textStatus, jqxhr ) {
 		playerInit();
 	});
 }

@@ -29,10 +29,10 @@
             width:80%;
             margin-left:1%;
             @media (min-width:$bp-phone) {
-                width:60%;
+                width:70%;
             }
             @media (min-width:$bp-tablet) {
-                width:70%;
+                width:75%;
             }
         }
     }
@@ -41,7 +41,7 @@
         display:inline-block;
         vertical-align:middle;
         font-size:22px;
-        margin-left:1%;
+        margin-left:2%;
         transition:color 0.1s;
 
         &:hover {

@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
+        <meta property="og:title" content="The Backpackerz"/>
+        <meta property="og:type" content="music.song"/>
+        <meta property="og:url" content="http://thebackpackerz.com/player/?url=https://www.youtube.com/watch?v=31WTmqyDaRY"/>
         <!-- build:template
         <link href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" rel="stylesheet" type="text/css">
         <!--[if lte IE 9]>
@@ -22,6 +25,9 @@
                     <span class="player__control player__control--load fa fa-circle-o-notch" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></span>
                     <div class="progressbar" onclick="seek(event); ga('send', 'event', 'seek', 'click', 'player buttons'); return false;">
                         <div class="progressbar__complete js-playerProgress"></div>
+                    </div>
+                    <div class="player__time js-playerTime">
+                        <span class="js-playerTimeElapsed">0:00</span> / <span class="js-playerTimeTotal">0:00</span>
                     </div>
                 </div>
             </div>

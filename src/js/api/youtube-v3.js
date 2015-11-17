@@ -15,6 +15,9 @@ var onYouTubeIframeAPIReady = function () {
             },
             'onStateChange': function(event) {
                 switch (event.data) {
+                    case YT.PlayerState.CUED:
+                        setTiming();
+                    break;
                     case YT.PlayerState.PLAYING:
                         isPlayerLoading = false;
                         isPlayerPlaying = true;
@@ -71,7 +74,10 @@ var playerGetCurrentTime = function () {
 };
 
 var playerPlay = function () {
-    setClass("is-loading");
+    setTimeout(function() {
+        if (!isPlayerPlaying)
+            setClass("is-loading");
+    }, 200);
     player.playVideo();
 };
 

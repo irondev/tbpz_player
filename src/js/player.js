@@ -10,37 +10,26 @@ var playerTimer,
 
 var setProgressBar = function () {
 	clearInterval(playerTimer);
-	playerTimer = setInterval(function() {
-		var duration = playerGetDuration();
-		var currentTime = playerGetCurrentTime();
-		playerProgression = currentTime * 100 / duration;
-		$progressBar.css({ width: playerProgression + '%' });
-		$playerTimeTotal.text(secToTime(duration));
-		$playerTimeElapsed.text(secToTime(currentTime));
-	}, 200);
-};
-
-var setProgressBar = function () {
-	clearInterval(playerTimer);
-	playerTimer = setInterval(function() {
-		var duration = playerGetDuration();
-		var currentTime = playerGetCurrentTime();
-		playerProgression = currentTime * 100 / duration;
-		$progressBar.css({ width: playerProgression + '%' });
-		$playerTimeTotal.text(secToTime(duration));
-		$playerTimeElapsed.text(secToTime(currentTime));
-	}, 200);
-};
-
-var setTiming = function () {
 	var duration = playerGetDuration();
 	$playerTimeTotal.text(secToTime(duration));
+	playerTimer = setInterval(function() {
+		var currentTime = playerGetCurrentTime();
+		playerProgression = currentTime * 100 / duration;
+		$progressBar.css({ width: playerProgression + '%' });
+		$playerTimeElapsed.text(secToTime(currentTime));
+	}, 200);
 };
 
 var unsetProgressBar = function () {
 	clearInterval(playerTimer);
 	playerProgression = 0;
 	$progressBar.css({ width: playerProgression + '%' });
+	$playerTimeElapsed.text('0:00');
+};
+
+var setTiming = function () {
+	var duration = playerGetDuration();
+	$playerTimeTotal.text(secToTime(duration));
 };
 
 var seek = function (e) {

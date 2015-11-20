@@ -45,18 +45,18 @@ var onYouTubeIframeAPIReady = function () {
 };
 
 var playerInit = function () {
-	var tag = document.createElement('script');
-	tag.src = "https://www.youtube.com/iframe_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 };
 
 var playerUrl2Id = function (url) {
     var id = null;
     if (url.indexOf('youtube.com/v/') != -1) {
-        id = url.substr((url.indexOf('/v/') + 3));
+        id = url.substr(url.indexOf('/v/') + 3);
     } else if (url.indexOf('?v=') != -1) {
-        id = url.substr((url.indexOf('?v=') + 3));
+        id = url.substr(url.indexOf('?v=') + 3);
     }
     return id;
 };
@@ -75,8 +75,9 @@ var playerGetCurrentTime = function () {
 
 var playerPlay = function () {
     setTimeout(function() {
-        if (!isPlayerPlaying)
+        if (!isPlayerPlaying) {
             setClass("is-loading");
+        }
     }, 200);
     player.playVideo();
 };
@@ -86,7 +87,7 @@ var playerPause = function () {
 };
 
 var playerStop = function () {
-	player.stopVideo();
+    player.stopVideo();
 };
 
 var playerSeekTo = function (value) {

@@ -7,6 +7,8 @@
         <meta property="og:title" content="The Backpackerz"/>
         <meta property="og:type" content="music.song"/>
         <meta property="og:url" content="http://thebackpackerz.com/player/?url=https://www.youtube.com/watch?v=31WTmqyDaRY"/>
+        <link href="//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- build:template
         <link href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" rel="stylesheet" type="text/css">
         <!--[if lte IE 9]>
@@ -22,7 +24,7 @@
                 <div class="player__controls">
                     <a href class="player__control player__control--play fa fa-play" onclick="playerPlay(); ga('send', 'event', 'play', 'click', 'player buttons'); return false;"></a>
                     <a href class="player__control player__control--pause fa fa-pause" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></a>
-                    <span class="player__control player__control--load fa fa-circle-o-notch" onclick="playerPause(); ga('send', 'event', 'pause', 'click', 'player buttons'); return false;"></span>
+                    <span class="player__control player__control--load fa fa-circle-o-notch"></span>
                     <div class="progressbar" onclick="seek(event); ga('send', 'event', 'seek', 'click', 'player buttons'); return false;">
                         <div class="progressbar__complete js-playerProgress"></div>
                     </div>

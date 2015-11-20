@@ -1,5 +1,5 @@
 {
-  "name": "BPZ_TOP100",
+  "name": "TBPZ_PLAYER",
   "version": "1.0.0",
   "devDependencies": {
     "bower": "^1.4.1",
@@ -10,8 +10,14 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-csslint": "^0.5.0",
+    "grunt-contrib-htmlmin": "^0.4.0",
+    "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-ftp-deploy": "^0.1.10",
+    "grunt-htmlhint": "^0.4.1",
+    "grunt-lintspaces": "^0.7.0",
+    "grunt-notify": "^0.4.1",
     "grunt-processhtml": "^0.3.8",
     "grunt-sass": "^1.0.0"
   }

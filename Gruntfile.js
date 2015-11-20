@@ -136,8 +136,49 @@ module.exports = function(grunt) {
                     authKey: env
                 },
                 src: 'dist/',
-                dest: 'www/special/rewind/',
+                dest: 'www/player/',
                 forceVerbose: true
+            }
+        },
+
+        htmlhint: {
+            default: {
+                options: {
+                    force: false,
+                    htmlhintrc: '.htmlhintrc'
+                },
+                src: ['src/**/*.html']
+            }
+        },
+
+        csslint: {
+            default: {
+                options: {
+                    csslintrc: '.csslintrc'
+                },
+                src: ['dist/css/**/*.css']
+            }
+        },
+
+        jshint: {
+            default: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: ['src/js/**/*.js', '!src/js/ext.js']
+            }
+        },
+
+        lintspaces: {
+            default: {
+                options: {
+                    newline: false,
+                    newlineMaximum: 2,
+                    trailingspaces: true,
+                    indentation: 'spaces',
+                    spaces: 4
+                },
+                src: ['src/**/*.html', 'src/css/**/*.scss', '!src/css/scss/base/_normalize.scss', 'src/js/**/*.js', '!src/js/ext.js']
             }
         }
 
@@ -152,13 +193,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-ftp-deploy');
+    grunt.loadNpmTasks('grunt-notify');
+    grunt.loadNpmTasks('grunt-htmlhint');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-lintspaces');
 
     grunt.registerTask('html', ['copy', 'processhtml']);
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
+    grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
     grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
-    grunt.registerTask('publish', ['clean', 'html', 'css', 'js']);
+    grunt.registerTask('publish', ['clean', 'html', 'css', 'js', 'test']);
     grunt.registerTask('default', ['publish', 'browserSync', 'watch']);
 
     grunt.event.on('watch', function(action, filepath, target) {

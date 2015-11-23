@@ -1,6 +1,4 @@
-var player,
-    sourceId,
-    sourceInfos;
+var player;
 
 player = $("#player")[0];
 
@@ -41,6 +39,7 @@ var playerGetCurrentTime = function () {
 
 var playerPlay = function () {
     player.play();
+    setClass("is-loading");
 };
 
 var playerPause = function () {
@@ -50,6 +49,7 @@ var playerPause = function () {
 var playerSeekTo = function (value) {
     var duration = playerGetDuration();
     var seekTo = duration * value / 100;
-    player.play();
+    if (!isPlayerPlaying)
+        playerPlay();
     player.currentTime = seekTo;
 };

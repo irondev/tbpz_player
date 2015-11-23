@@ -74,25 +74,18 @@ var playerGetCurrentTime = function () {
 };
 
 var playerPlay = function () {
-    setTimeout(function() {
-        if (!isPlayerPlaying) {
-            setClass("is-loading");
-        }
-    }, 200);
     player.playVideo();
+    setClass("is-loading");
 };
 
 var playerPause = function () {
     player.pauseVideo();
 };
 
-var playerStop = function () {
-    player.stopVideo();
-};
-
 var playerSeekTo = function (value) {
     var duration = playerGetDuration();
     var seekTo = duration * value / 100;
-    player.playVideo();
+    if (!isPlayerPlaying)
+        playerPlay();
     player.seekTo(seekTo);
 };

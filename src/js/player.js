@@ -97,6 +97,10 @@ if (!sourceUrl) {
     jQuery.getScript("./js/api/youtube-v3.js", function( data, textStatus, jqxhr ) {
         playerInit();
     });
+} else if (sourceUrl.indexOf("soundcloud.com") != -1) {
+    jQuery.getScript("./js/api/soundcloud-v3.js", function( data, textStatus, jqxhr ) {
+        playerInit();
+    });
 } else {
     console.error("Source not supported");
 }

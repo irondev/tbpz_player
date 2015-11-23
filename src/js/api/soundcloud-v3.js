@@ -15,11 +15,11 @@ var playerInit = function () {
 var playerLoadByUrl = function (url) {
     SC.resolve(url).then(function(datas){
         infos = datas;
-        sourceId = datas.id
+        sourceId = datas.id;
 
         SC.stream('/tracks/'+ sourceId).then(function(stream){
             player = stream;
-           
+
             player.on("state-change", function(state) {
                 switch (state) {
                     case "canplay":
@@ -71,7 +71,8 @@ var playerPause = function () {
 var playerSeekTo = function (value) {
     var duration = playerGetDuration();
     var seekTo = duration * value / 100;
-    if (!isPlayerPlaying)
+    if (!isPlayerPlaying) {
         playerPlay();
+    }
     player.seek(seekTo * 1000);
 };

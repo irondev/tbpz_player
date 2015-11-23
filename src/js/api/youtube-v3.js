@@ -85,7 +85,8 @@ var playerPause = function () {
 var playerSeekTo = function (value) {
     var duration = playerGetDuration();
     var seekTo = duration * value / 100;
-    if (!isPlayerPlaying)
+    if (!isPlayerPlaying) {
         playerPlay();
+    }
     player.seekTo(seekTo);
 };

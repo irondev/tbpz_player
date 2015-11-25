@@ -68,7 +68,7 @@ var playerUrl2Id = function (url) {
         isPlaylist = true;
     } else if (url.indexOf('youtube.com/v/') != -1) {
         id = url.substr(url.indexOf('/v/') + 3);
-    } else if (url.indexOf('youtube.com?v=') != -1) {
+    } else if (url.indexOf('youtube.com/watch?v=') != -1) {
         id = url.substr(url.indexOf('?v=') + 3);
     }
     return id;

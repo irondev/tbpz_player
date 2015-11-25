@@ -3,6 +3,10 @@ var playerTimer,
     $progressBar = jQuery('.js-playerProgress'),
     $playerTimeElapsed = jQuery('.js-playerTimeElapsed'),
     $playerTimeTotal = jQuery('.js-playerTimeTotal'),
+    $playerPlaylist = jQuery('.js-playerPlaylist'),
+    $playerPrev = jQuery('.js-playerPrev'),
+    $playerNext = jQuery('.js-playerNext'),
+    $playerPlaylistItems,
     isPlayerReady = false,
     isPlayerLoading = false,
     isPlayerPlaying = false,
@@ -30,6 +34,37 @@ var unsetProgressBar = function () {
 var setTiming = function () {
     var duration = playerGetDuration();
     $playerTimeTotal.text(secToTime(duration));
+};
+
+var setPlaylist = function (datas) {
+    var tpl = '<li class="player__playlistItem js-playerPlaylistItems">{{title}}</li>';
+    var html = '';
+    for (var i in datas) {
+        html += tpl.replace(/{{title}}/g, datas[i].title);
+    }
+    $player.addClass("is-playlist");
+    $playerPlaylist.append(html);
+
+    $playerPlaylistItems = jQuery('.js-playerPlaylistItems');
+    $playerPlaylistItems.on("click", function() {
+        playerPlaylistAt($(this).index());
+    });
+};
+
+var setPlaylistIndex = function (index) {
+    $playerPlaylistItems.removeClass("is-active");
+    $playerPlaylistItems.eq(index).addClass("is-active");
+
+    if (index === 0) {
+        $playerPrev.addClass("is-disabled");
+    } else {
+        $playerPrev.removeClass("is-disabled");
+    }
+    if (index === $playerPlaylistItems.length - 1) {
+        $playerNext.addClass("is-disabled");
+    } else {
+        $playerNext.removeClass("is-disabled");
+    }
 };
 
 var seek = function (e) {

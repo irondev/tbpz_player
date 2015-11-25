@@ -2,37 +2,93 @@
     position:static;
     z-index:10;
     width:100%;
-    height:50px;
+    box-sizing:border-box;
+    overflow:hidden;
     background:$color-light-3;
     text-align:left;
-    color:$color-light-1;
+    font-family:"Roboto";
 
     a {
         color:$color-light-2;
         text-decoration:none;
     }
 
-    &__wrapper {
+    &__bar {
         width:100%;
-        height:inherit;
+        height:50px;
         display:table;
+    }
+
+    &__playlist {
+        display:none;
+        width:100%;
+        margin:0;
+        padding:0;
+        list-style:none;
+        border:1px solid $color-light-3;
+
+        .player.is-playlist & {
+            display:block;
+        }
+    }
+
+    &__playlistItem {
+        display:table;
+        width:100%;
+        padding:10px 2%;
+        background:$color-light-4;
+        color:$color-light-1;
+        border-top:1px solid $color-light-3;
+        font-size:13px;
+
+        &:hover {
+            cursor:pointer;
+            color:$color-red;
+        }
+
+        &.is-active {
+            background:$color-red;
+            color:#FFF;
+            &:hover {
+                cursor:default;
+            }
+        }
     }
 
     &__controls {
         display:table-cell;
         vertical-align:middle;
+        padding-left:2%;
+        width:1%;
+        white-space:nowrap;
     }
 
-    &__controls {
+    &__progressbar {
+        display:table-cell;
+        vertical-align:middle;
+        width:80%;
+        padding-left:2%;
+        @media (min-width:$bp-phone) {
+            width:50%;
+        }
+        @media (min-width:$bp-tablet) {
+            width:60%;
+        }
         .progressbar {
-            width:85%;
-            margin-left:1%;
-            @media (min-width:$bp-phone) {
-                width:50%;
-            }
-            @media (min-width:$bp-tablet) {
-                width:65%;
-            }
+            vertical-align:middle;
+            margin-top:-2px;
+        }
+    }
+
+    &__time {
+        display:none;
+        padding-left:1%;
+        color:$color-light-2;
+        font-size:12px;
+        line-height:15px;
+        @media (min-width:$bp-phone) {
+            display:table-cell;
+            vertical-align:middle;
         }
     }
 
@@ -41,28 +97,20 @@
         display:inline-block;
         vertical-align:middle;
         font-size:22px;
-        margin-left:2%;
-        width:16px;
+        min-width:20px;
+        text-align:center;
         transition:color 0.1s;
         color:$color-light-2;
 
-        &:hover {
+        &:not(.is-disabled):hover {
             color:$color-red;
         }
 
         &--load {
             width:auto;
             font-size:20px;
+            color:$color-red;
             animation:rotate360 1s infinite linear;
-
-            &:hover {
-                color:$color-light-2;
-                cursor:default;
-            }
-        }
-
-        &--pause {
-            animation:blink 2s infinite linear;
         }
 
         .player:not(.is-loading) &--load {
@@ -77,16 +125,27 @@
         .player:not(.is-playing) &--pause {
             display:none;
         }
-    }
 
-    &__time {
-        display:none;
-        vertical-align:middle;
-        font-size:13px;
-        margin-left:2%;
-        color:$color-light-2;
-        @media (min-width:$bp-phone) {
-            display:inline-block;
+        &--prev,
+        &--next {
+            display:none;
+
+            .player.is-playlist & {
+                display:inline-block;
+            }
+
+            &.is-disabled {
+                opacity:0.5;
+                cursor:default;
+            }
+        }
+
+        &--prev {
+            text-align:left;
+        }
+
+        &--next {
+            text-align:right;
         }
     }
 
@@ -96,14 +155,21 @@
         right:1%;
         top:16px;
         display:none;
-        width:110px;
+        width:22px;
         height:15px;
         @media (min-width:$bp-phone) {
             display:block;
         }
+        @media (min-width:$bp-phablet) {
+            width:110px;
+            height:15px;
+        }
         background:url("../img/logo.png") no-repeat left;
-        background-size:contain;
         filter:grayscale(100%);
+    }
+
+    &.is-playing:after {
+        animation:blink 2s infinite linear;
     }
 
     #player {

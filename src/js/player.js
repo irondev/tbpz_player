@@ -65,6 +65,8 @@ var setPlaylistIndex = function (index) {
     } else {
         $playerNext.removeClass("is-disabled");
     }
+console.log($playerPlaylistItems.eq(index).position().top + $playerPlaylist.scrollTop());
+    $playerPlaylist.animate({ scrollTop: $playerPlaylistItems.eq(index).position().top + $playerPlaylist.scrollTop() });
 };
 
 var seek = function (e) {

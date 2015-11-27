@@ -37,10 +37,10 @@ var setTiming = function () {
 };
 
 var setPlaylist = function (datas) {
-    var tpl = '<li class="player__playlistItem js-playerPlaylistItems">{{title}}</li>';
+    var tpl = '<li class="player__playlistItem js-playerPlaylistItems">{{number}}. {{title}}</li>';
     var html = '';
     for (var i in datas) {
-        html += tpl.replace(/{{title}}/g, datas[i].title);
+        html += tpl.replace(/{{number}}/g, parseInt(i, 10) + 1).replace(/{{title}}/g, datas[i].title);
     }
     $player.addClass("is-playlist");
     $playerPlaylist.append(html);
@@ -65,8 +65,12 @@ var setPlaylistIndex = function (index) {
     } else {
         $playerNext.removeClass("is-disabled");
     }
-console.log($playerPlaylistItems.eq(index).position().top + $playerPlaylist.scrollTop());
-    $playerPlaylist.animate({ scrollTop: $playerPlaylistItems.eq(index).position().top + $playerPlaylist.scrollTop() });
+
+    $playerPlaylist.animate({ scrollTop: $playerPlaylistItems.eq(index).position().top + $playerPlaylist.scrollTop() - ($playerPlaylistItems.eq(index).outerHeight() * 2) });
+};
+
+var unsetPlaylistIndex = function () {
+    $playerPlaylistItems.removeClass("is-active");
 };
 
 var seek = function (e) {

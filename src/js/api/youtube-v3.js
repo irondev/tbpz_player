@@ -47,6 +47,9 @@ var onYouTubeIframeAPIReady = function () {
                         isPlayerPaused = false;
                         unsetProgressBar();
                         setClass("is-ended");
+                        if (isPlaylist) {
+                            unsetPlaylistIndex();
+                        }
                     break;
                 }
             }

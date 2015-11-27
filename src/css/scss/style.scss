@@ -3,6 +3,8 @@
 @import "base/normalize";
 @import "base/animations";
 
+body {overflow:hidden}
+
 /* COMPONENTS */
 @import "components/player";
 @import "components/progressbar";

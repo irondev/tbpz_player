@@ -17,6 +17,12 @@
         width:100%;
         height:50px;
         display:table;
+        background:$color-light-3;
+        transition:background linear 0.25s;
+
+        .player.is-playing & {
+            background:transparent;
+        }
     }
 
     &__playlist {
@@ -187,7 +193,7 @@
         content:' ';
         position:absolute;
         right:1%;
-        top:16px;
+        bottom:20px;
         display:none;
         width:22px;
         height:15px;
@@ -208,5 +214,25 @@
 
     #player {
         position:absolute;
+    }
+
+    &__mask {
+        display:none;
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+
+        .player.is-playing & {
+            display:block;
+        }
+    }
+
+    &.is-video {
+        .player__bar {
+            position:absolute;
+            bottom:0;
+        }
     }
 }

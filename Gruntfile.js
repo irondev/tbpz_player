@@ -206,7 +206,8 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
     grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
     grunt.registerTask('publish', ['clean', 'html', 'css', 'js', 'test']);
-    grunt.registerTask('default', ['publish', 'browserSync', 'watch']);
+    grunt.registerTask('serve', ['browserSync', 'watch']);
+    grunt.registerTask('default', ['publish', 'serve']);
 
     grunt.event.on('watch', function(action, filepath, target) {
         grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

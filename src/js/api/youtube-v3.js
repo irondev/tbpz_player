@@ -7,12 +7,22 @@ var onYouTubeIframeAPIReady = function () {
     player = new YT.Player('player', {
         height: '0',
         width: '0',
-        loop: 0,
+        playerVars: {
+            loop: 0,
+            autoplay: 0,
+            controls: 0,
+            showinfo: 0,
+            rel: 0,
+            modestbranding: 1
+        },
         events: {
             'onReady': function(event) {
                 isPlayerReady = true;
                 sourceId = playerUrl2Id(sourceUrl);
                 playerLoadById(sourceId);
+                if (isVideo) {
+                    playerResize($(window).width(), $(window).width() * 9 / 16);
+                }
             },
             'onStateChange': function(event) {
                 switch (event.data) {
@@ -132,4 +142,8 @@ var playerNext = function () {
 
 var playerPlaylistAt = function (index) {
     player.playVideoAt(index);
+};
+
+var playerResize = function (width, height) {
+    player.setSize(width, height);
 };

@@ -128,6 +128,11 @@ var secToTime = function (sec) {
     return time;
 };
 
+var isVideo = getUrlParam('isVideo') || 0;
+if (isVideo) {
+    $player.addClass("is-video");      
+}
+
 var sourceUrl = getUrlParam('url');
 if (!sourceUrl) {
     console.error("Missing param `url`");

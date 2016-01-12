@@ -1,4 +1,4 @@
 # Player
 
 ````
-Demo : https://rawgit.com/irondev/tbpz_player/master/test.html
+Demo : http://thebackpackerz.com/player/?url=https://www.youtube.com/watch?v=31WTmqyDaRY

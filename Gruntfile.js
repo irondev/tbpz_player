@@ -141,6 +141,13 @@ module.exports = function(grunt) {
             }
         },
 
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
+        },
+
         htmlhint: {
             default: {
                 options: {
@@ -193,6 +200,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-ftp-deploy');
+    grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-csslint');
@@ -204,7 +212,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['concat']);
 
     grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
-    grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
+    grunt.registerTask('deploy', ['publish', /*'ftp-deploy', */ 'gh-pages']);
     grunt.registerTask('publish', ['clean', 'html', 'css', 'js', 'test']);
     grunt.registerTask('serve', ['browserSync', 'watch']);
     grunt.registerTask('default', ['publish', 'serve']);

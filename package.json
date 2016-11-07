@@ -15,6 +15,7 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-ftp-deploy": "^0.1.10",
+    "grunt-gh-pages": "^2.0.0",
     "grunt-htmlhint": "^0.4.1",
     "grunt-lintspaces": "^0.7.0",
     "grunt-notify": "^0.4.1",

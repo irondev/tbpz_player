@@ -23,6 +23,15 @@
         .player.is-playing & {
             background:transparent;
         }
+
+        .player.is-video & {
+            position:absolute;
+            bottom:0;
+        }
+
+        .player.is-video.is-playlist & {
+            bottom:182px;
+        }
     }
 
     &__playlist {
@@ -38,6 +47,11 @@
 
         .player.is-playlist & {
             display:block;
+        }
+
+        .player.is-video.is-playlist & {
+            position:absolute;
+            bottom:0;
         }
 
         &::-webkit-scrollbar {
@@ -229,10 +243,4 @@
         }
     }
 
-    &.is-video {
-        .player__bar {
-            position:absolute;
-            bottom:0;
-        }
-    }
 }

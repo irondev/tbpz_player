@@ -130,7 +130,7 @@ var secToTime = function (sec) {
 
 var isVideo = getUrlParam('isVideo') || 0;
 if (isVideo) {
-    $player.addClass("is-video");      
+    $player.addClass("is-video");
 }
 
 var sourceUrl = getUrlParam('url');

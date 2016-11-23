@@ -133,6 +133,9 @@ if (isVideo) {
     $player.addClass("is-video");
 }
 
+var theme = getUrlParam('theme') || 'light';
+$player.addClass("player--" + theme);
+
 var sourceUrl = getUrlParam('url');
 if (!sourceUrl) {
     console.error("Missing param `url`");

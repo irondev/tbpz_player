@@ -17,7 +17,6 @@
         width:100%;
         height:50px;
         display:table;
-        background:$color-light-3;
         transition:background linear 0.25s;
 
         .player.is-playing & {
@@ -120,7 +119,7 @@
     &__progressbar {
         display:table-cell;
         vertical-align:middle;
-        width:80%;
+        width:60%;
         padding-left:2%;
         @media (min-width:$bp-phone) {
             width:50%;
@@ -240,6 +239,29 @@
 
         .player.is-playing & {
             display:block;
+        }
+    }
+
+    &--dark {
+        background:$color-dark;
+    }
+
+    &--dark &__playlist {
+        border-color:$color-dark;
+    }
+
+    &--dark &__playlistItem {
+        background:lighten($color-dark, 10%);
+        border-color:$color-dark;
+        color:$color-light-2;
+
+        &:hover {
+            color:$color-red;
+        }
+
+        &.is-active {
+            background: $color-red;
+            color:$color-light-4;
         }
     }
 

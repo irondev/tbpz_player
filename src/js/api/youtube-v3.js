@@ -1,7 +1,8 @@
 var player,
     sourceId,
     sourceInfos,
-    isPlaylist;
+    isPlaylist,
+    autoplay = getUrlParam('autoplay') ? 1 : 0;
 
 var onYouTubeIframeAPIReady = function () {
     player = new YT.Player('player', {
@@ -33,6 +34,9 @@ var onYouTubeIframeAPIReady = function () {
                             jQuery.get("https://www.googleapis.com/youtube/v3/videos?id="+ list.join(",") +"&key=AIzaSyB6ROFks0k_PNjdAL4wUF22YWyXLQSCal8&part=snippet&fields=items(id,snippet(title))", function(datas) {
                                 setPlaylist(preparePlaylistDatas(datas));
                             });
+                        }
+                        if (autoplay) {
+                            playerPlay();
                         }
                     break;
                     case YT.PlayerState.PLAYING:

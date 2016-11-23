@@ -121,27 +121,25 @@
         vertical-align:middle;
         width:60%;
         padding-left:2%;
-        @media (min-width:$bp-phone) {
-            width:50%;
-        }
-        @media (min-width:$bp-tablet) {
-            width:60%;
-        }
         .progressbar {
             vertical-align:middle;
             margin-top:-2px;
         }
+
+        .player.is-playlist & {
+            width:50%;
+        }
     }
 
     &__time {
-        display:none;
+        display:table-cell;
+        vertical-align:middle;
         padding-left:1%;
         color:$color-light-2;
-        font-size:12px;
+        font-size:0;
         line-height:15px;
         @media (min-width:$bp-phone) {
-            display:table-cell;
-            vertical-align:middle;
+            font-size:12px;
         }
     }
 
@@ -248,6 +246,14 @@
 
     &--dark &__playlist {
         border-color:$color-dark;
+
+        &::-webkit-scrollbar-track {
+            background:$color-dark;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background:$color-light-1;
+        }
     }
 
     &--dark &__playlistItem {

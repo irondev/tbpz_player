@@ -33,9 +33,11 @@ var onYouTubeIframeAPIReady = function () {
                             var list = player.getPlaylist();
                             jQuery.get("https://www.googleapis.com/youtube/v3/videos?id="+ list.join(",") +"&key=AIzaSyB6ROFks0k_PNjdAL4wUF22YWyXLQSCal8&part=snippet&fields=items(id,snippet(title))", function(datas) {
                                 setPlaylist(preparePlaylistDatas(datas));
+                                if (autoplay) {
+                                    playerPlay();
+                                }
                             });
-                        }
-                        if (autoplay) {
+                        } else if (autoplay) {
                             playerPlay();
                         }
                     break;

@@ -136,6 +136,20 @@ if (isVideo) {
 var theme = getUrlParam('theme') || 'light';
 $player.addClass("player--" + theme);
 
+var otherPlayersStop = function () {
+    for (var i = 0; i < parent.window.frames.length; i++) {
+        if (parent.window.frames[i].location.href != window.location.href) {
+            parent.window.frames[i].postMessage('playerStop', '*');
+        }
+    }
+};
+
+window.addEventListener('message', function(e) {
+    if (event.data == 'playerStop') {
+        playerPause();
+    }
+}, false);
+
 var sourceUrl = getUrlParam('url');
 if (!sourceUrl) {
     console.error("Missing param `url`");

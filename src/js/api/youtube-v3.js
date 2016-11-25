@@ -123,6 +123,7 @@ var playerGetCurrentTime = function () {
 var playerPlay = function () {
     player.playVideo();
     setClass("is-loading");
+    otherPlayersStop();
 };
 
 var playerPause = function () {

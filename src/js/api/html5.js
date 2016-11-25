@@ -40,6 +40,7 @@ var playerGetCurrentTime = function () {
 var playerPlay = function () {
     player.play();
     setClass("is-loading");
+    otherPlayersStop();
 };
 
 var playerPause = function () {
